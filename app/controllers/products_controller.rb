@@ -19,6 +19,11 @@ class ProductsController < ApplicationController
   def edit
   end
 
+  def search
+    @products = Product.search(params[:product])
+    render 'shops/index'
+  end
+
   # POST /products or /products.json
   def create
     @product = Product.new(product_params)

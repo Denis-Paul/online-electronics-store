@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   root 'home#index'
   # root 'products#index'
   # root 'shops#index'
+  get 'search_product', to: 'products#search'
+  # get 'favorites', to: '#'
 end
