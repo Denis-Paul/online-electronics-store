@@ -21,8 +21,7 @@ class ProductsController < ApplicationController
 
   # GET /products/search
   def search
-    # @products = Product.search(params[:product])
-    @products = Product.search_by_name(params[:product])
+    @products = Product.search(params[:product])
     render 'shops/index'
   end
 

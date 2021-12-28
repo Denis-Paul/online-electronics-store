@@ -1,0 +1,18 @@
+<% @order_items.each do |item| %>
+    <div><%= item.product.name %></div>
+    <div><%= item.product.price %><div>
+     <%= form_with model: item do |f| %> <%#, url: order_items_path %>
+        <div class="field">
+            <%= f.hidden_field :product_id, value: item.product.id %>
+            <%= f.number_field :quantity, value: item.quantity.to_i %>
+        </div>
+        <div class="actions">
+            <%= f.submit "Update Cart" %>
+        </div>
+        <%= link_to "Remove Items", item, method: :delete, remote: true %>
+    <% end %>
+    <div>Subtotal: <%= item.total %><div>
+    <hr>
+<% end %>
+
+<div>Your current order has a total of: <%= current_cart.subtotal %><div>
