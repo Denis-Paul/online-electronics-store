@@ -19,8 +19,10 @@ class ProductsController < ApplicationController
   def edit
   end
 
+  # GET /products/search
   def search
-    @products = Product.search(params[:product])
+    # @products = Product.search(params[:product])
+    @products = Product.search_by_name(params[:product])
     render 'shops/index'
   end
 
