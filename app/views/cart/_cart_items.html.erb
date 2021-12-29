@@ -7,12 +7,17 @@
             <%= f.number_field :quantity, value: item.quantity.to_i %>
         </div>
         <div class="actions">
-            <%= f.submit "Update Cart" %>
+            <%= f.submit "Update Cart", class: 'btn btn-success' %>
         </div>
-        <%= link_to "Remove Items", item, method: :delete, remote: true %>
+        <%# <div>
+            <%= link_to "Update Cart", item, method: :put, remote: true %
+        </div> %>
+        <div>
+            <%= link_to "Remove Items", item, method: :delete, remote: true %>
+        </div>
     <% end %>
-    <div>Subtotal: <%= item.total %><div>
+    <div>Subtotal: <%= item.total %></div>
     <hr>
 <% end %>
 
-<div>Your current order has a total of: <%= current_cart.subtotal %><div>
+<div>Your current order has a total of: <%= current_cart.subtotal %></div>
