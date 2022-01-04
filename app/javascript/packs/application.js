@@ -13,3 +13,8 @@ Turbolinks.start()
 ActiveStorage.start()
 
 import "bootstrap"
+import {} from 'jquery-ujs'
+
+//= require jquery
+//= require jquery-ui
+//= require jquery_ujs
