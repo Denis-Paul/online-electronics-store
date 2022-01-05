@@ -20,4 +20,8 @@
     <hr>
 <% end %>
 
-<div>Your current order has a total of: <%= current_cart.subtotal %></div>
+<div>Your current order has a <b>total</b> of: <b><%= current_cart.subtotal %></b></div>
+<hr>
+<div>
+    <%= button_to "Continue", remote: true, class: 'btn btn-primary' %>
+</div>
