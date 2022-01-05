@@ -1,6 +1,8 @@
 class Product < ApplicationRecord
-    # belongs_to :category
     has_many :order_items
+
+    has_many :favorites
+    has_many :users, through: :favorites
 
     scope :search_by_name, ->(query) { where(["lower(name) LIKE ?", "%#{query.downcase}%"]) }
     scope :search_by_description, ->(query) { where(["lower(description) LIKE ?", "%#{query.downcase}%"]) }

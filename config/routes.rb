@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
+  resources :favorites
   resources :products do 
     collection do
       get 'search', to: 'products#search'
@@ -8,7 +9,7 @@ Rails.application.routes.draw do
   resources :order_items do 
     collection do
       post 'create', to: 'order_items#create'
-      patch 'update', to: 'order_items#update'
+      # patch 'update', to: 'order_items#update'
     end
   end
   resources :shops #, only:[:index, :show]
@@ -16,5 +17,4 @@ Rails.application.routes.draw do
   # root 'products#index'
   # get 'shops#index'
   get 'cart', to: 'cart#show'
-  # get 'favorites', to: '#'
 end

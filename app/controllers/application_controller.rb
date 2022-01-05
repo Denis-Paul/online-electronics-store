@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+    skip_forgery_protection
+
     include ApplicationHelper
     # before_action :authenticate_user! , except: [:home]
 
@@ -12,4 +14,10 @@ class ApplicationController < ActionController::Base
     #     end
     #     @current_cart
     # end
+
+    def favorite_text
+        return @favorite_exists ? "Remove from Favorites" : "Add to Favorites"
+    end
+
+    helper_method :favorite_text
 end

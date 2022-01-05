@@ -9,5 +9,6 @@ class ShopsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+    @favorite_exists = Favorite.where(product_id: @product.id, user_id: current_user.id) == [] ? false : true # @product.id
   end
 end

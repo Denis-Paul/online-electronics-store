@@ -1,0 +1,20 @@
+<h1>List of favorite products</h1>
+
+<% if current_user.favorites.size > 0 %>
+    <% current_user.favorites.each do |favorite| %>
+        <div><%= favorite.product.name %></div>
+        <div><%= favorite.product.price %></div>
+        <%= form_with model: @order_items, url: order_items_path do |f| %>
+            <div class="field">
+                <%= f.hidden_field :product_id, value: favorite.product.id %>
+                <%= f.number_field :quantity, value: 1, min: 1 %>
+            </div>
+            <div class="actions">
+                <%= f.submit "Add to Cart", class: 'btn btn-success' %>
+            </div>
+        <% end %>
+    <% end %>
+<% else %>
+    <p> Momentarly you don't have favorite products added. </p>
+<% end %>
+
