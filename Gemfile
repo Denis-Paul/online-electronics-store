@@ -26,6 +26,7 @@ gem 'devise'
 gem 'devise-bootstrap-views', '~> 1.0'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
+gem 'simplecov', require: false, group: :test
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
@@ -55,6 +56,14 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
+  # gem 'simplecov', require: false
+end
+
+group :development, :test do
+    # There may be other lines in this block already. Simply append the following after:
+    %w[rspec-core rspec-expectations rspec-mocks rspec-rails rspec-support].each do |lib|
+        gem lib, git: "https://github.com/rspec/#{lib}.git", branch: 'main' # Previously '4-0-dev' or '4-0-maintenance' branch
+    end
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
