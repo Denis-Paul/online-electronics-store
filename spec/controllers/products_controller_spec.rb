@@ -22,7 +22,8 @@ RSpec.describe ProductsController, type: :controller do
 
     describe "Products /search" do
         it "should return searched product" do
-            #
+            # get :search, params: { product: 'Samsung' }
+            # expect(assigns(:products)).to eq()
         end
     end
 
