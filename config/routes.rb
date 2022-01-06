@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  devise_for :users
+  root 'home#index'
+  # devise_for :users
+  devise_for :users do
+    get '/users/sign_out', to: 'devise/sessions#destroy'
+  end
   resources :favorites
   resources :products do 
     collection do
@@ -13,7 +17,6 @@ Rails.application.routes.draw do
     end
   end
   resources :shops #, only:[:index, :show]
-  root 'home#index'
   # root 'products#index'
   # get 'shops#index'
   get 'cart', to: 'cart#show'
