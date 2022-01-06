@@ -6,6 +6,24 @@ require_relative '../config/environment'
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
+# require 'bundler'  
+# require 'capybara/dsl'  
+# require 'capybara/rspec' 
+
+# Capybara.register_driver :selenium do |app|
+#   Capybara::Selenium::Driver.new(app, :browser => :chrome)
+# end
+# Capybara.always_include_port = true
+# # Capybara.default_wait_time = 10
+# Capybara.default_max_wait_time = 10
+# # Capybara.default_driver = :selenium_chrome
+# Capybara.default_driver = :selenium_chrome_headless
+# Capybara.javascript_driver = :selenium_chrome_headless
+# # Capybara.javascript_driver = :chrome
+# # Capybara.javascript_driver = :selenium
+# # Capybara.current_driver = :selenium
+# Capybara.app_host = 'http://localhost:3000'
+# Capybara.server_host = 'web'
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
