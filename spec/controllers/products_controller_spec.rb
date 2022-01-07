@@ -9,21 +9,16 @@ RSpec.describe ProductsController, type: :controller do
     let(:invalid_product_attributes) { { } }
 
     describe "Products /index" do
-        it "renders the index template" do
+        before(:each) do
             get :index
+        end
+
+        it "renders the index template" do
             expect(response).to render_template("index")
         end
 
         it "assigns all products to @products" do
-            get :index
             expect(assigns(:products)).to eq(Product.all)
-        end
-    end
-
-    describe "Products /search" do
-        it "should return searched product" do
-            # get :search, params: { product: 'Samsung' }
-            # expect(assigns(:products)).to eq()
         end
     end
 
@@ -31,7 +26,7 @@ RSpec.describe ProductsController, type: :controller do
         context 'with valid parameters' do
             it 'creates a new product' do
                 expect {
-                    get :create, params: { product: valid_product_attributes }
+                    post :create, params: { product: valid_product_attributes }
                 }.to change(Product, :count).by(1)
             end
       
@@ -41,10 +36,22 @@ RSpec.describe ProductsController, type: :controller do
             end
           end
       
-          context 'with invalid parameters' do
+        context 'with invalid parameters' do
             it 'does not create a new product' do
                 #
             end
-          end
+        end
+    end
+
+    describe "Products /search" do
+        before(:each) do
+            post :create, params: { product: valid_product_attributes }
+        end
+
+        it "returns the searched product" do
+            get :search, params: { product: 'Google' }
+            result = (controller.instance_variable_get(:@products)).to_a
+            # expect(assigns(:products)).to eq valid_product_attributes
+        end
     end
 end
