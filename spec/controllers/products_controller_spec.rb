@@ -48,10 +48,11 @@ RSpec.describe ProductsController, type: :controller do
             post :create, params: { product: valid_product_attributes }
         end
 
+        subject(:product) { Product.first }
         it "returns the searched product" do
             get :search, params: { product: 'Google' }
-            result = (controller.instance_variable_get(:@products)).to_a
-            # expect(assigns(:products)).to eq valid_product_attributes
+            searched_product = (controller.instance_variable_get(:@products)).to_a
+            expect(product.name).to eq searched_product[0]['name']
         end
     end
 end
